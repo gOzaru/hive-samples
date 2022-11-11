@@ -11,7 +11,7 @@ void main() async {
     Hive.init(dir.path);
   }
 
-  Hive.registerAdapter(ColoredPathAdapter(), 35);
+  Hive.registerAdapter(ColoredPathAdapter());
 
   runApp(DrawApp());
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive/hive.dart';
 
 part 'main.g.dart';
 
@@ -13,6 +12,7 @@ enum Relationship {
   @HiveField(1)
   Friend,
 }
+
 const relationships = <Relationship, String>{
   Relationship.Family: "Family",
   Relationship.Friend: "Friend",
@@ -68,24 +68,26 @@ class MyApp extends StatelessWidget {
                     showDialog(
                       context: context,
                       barrierDismissible: true,
-                      child: AlertDialog(
-                        content: Text(
-                          "Do you want to delete ${c.name}?",
-                        ),
-                        actions: <Widget>[
-                          FlatButton(
-                            child: Text("No"),
-                            onPressed: () => Navigator.of(context).pop(),
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          content: Text(
+                            "Do you want to delete ${c.name}?",
                           ),
-                          FlatButton(
-                            child: Text("Yes"),
-                            onPressed: () async {
-                              Navigator.of(context).pop();
-                              await box.deleteAt(index);
-                            },
-                          ),
-                        ],
-                      ),
+                          actions: <Widget>[
+                            ElevatedButton(
+                              child: Text("No"),
+                              onPressed: () => Navigator.of(context).pop(),
+                            ),
+                            ElevatedButton(
+                              child: Text("Yes"),
+                              onPressed: () async {
+                                Navigator.of(context).pop();
+                                await box.deleteAt(index);
+                              },
+                            ),
+                          ],
+                        );
+                      },
                     );
                   },
                   child: Card(
@@ -175,7 +177,6 @@ class _AddContactState extends State<AddContact> {
                 keyboardType: TextInputType.number,
                 initialValue: "",
                 maxLength: 3,
-                maxLengthEnforced: true,
                 decoration: const InputDecoration(
                   labelText: "Age",
                 ),
@@ -212,7 +213,7 @@ class _AddContactState extends State<AddContact> {
                   });
                 },
               ),
-              OutlineButton(
+              TextButton(
                 child: Text("Submit"),
                 onPressed: onFormSubmit,
               ),

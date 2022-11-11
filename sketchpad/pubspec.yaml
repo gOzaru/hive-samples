@@ -6,9 +6,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  hive: ^1.2.0-dev
-  hive_flutter: any
-  path_provider: any
+  hive:
+  hive_flutter:
+  path_provider:
 
 flutter:
   uses-material-design: true

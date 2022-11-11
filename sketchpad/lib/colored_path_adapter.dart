@@ -22,4 +22,8 @@ class ColoredPathAdapter extends TypeAdapter<ColoredPath> {
       writer.writeDouble(point.dy);
     }
   }
+  
+  @override
+  // TODO: implement typeId
+  int get typeId => throw UnimplementedError();
 }

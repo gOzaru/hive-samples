@@ -35,13 +35,13 @@ class _NewTodoDialogState extends State<NewTodoDialog> {
         ],
       ),
       actions: <Widget>[
-        FlatButton(
+        ElevatedButton(
           child: Text('Cancel'),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
-        FlatButton(
+        ElevatedButton(
           child: Text('Add'),
           onPressed: () {
             if (controller.text.isNotEmpty) {
